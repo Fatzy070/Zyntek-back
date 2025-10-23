@@ -2,9 +2,13 @@ import mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
 import User from '../models/userSchema.js'
 
+
 const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb://localhost:27017/commerce');
+    
+
+    await mongoose.connect(process.env.MONGO_URL);
+    
     console.log("✅ Connected to MongoDB successfully");
 
     // Check for existing admin by email instead of role
